@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 /* eslint-disable react/prop-types */
 export default function Button({ children, disabled, to, type }) {
-  const base = `inline-block 
+  const base = `inline-block text-sm
     rounded-full bg-yellow-400 
     font-semibold 
     uppercase tracking-wide 
@@ -14,7 +14,7 @@ export default function Button({ children, disabled, to, type }) {
 
   const styles = {
     primary: base + ' px-4 py-3 md:px-6 md:py-4',
-    secondary: `inline-block 
+    secondary: `inline-block text-sm
     rounded-full border-2 
     border-stone-300 font-semibold 
     uppercase tracking-wide 
