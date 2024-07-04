@@ -1,12 +1,24 @@
 /* eslint-disable react/prop-types */
 import { formatCurrency } from '../../utils/helpers';
 import Button from '../../ui/Button';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../cart/cartSlice';
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
+  const dispatch = useDispatch();
+
   function handleAddToCart() {
-    console.log(id);
+    const newItem = {
+      pizzaId: id,
+      name,
+      quantity: 1,
+      unitPrice,
+      totalPrice: unitPrice * 1,
+    };
+
+    dispatch(addItem(newItem));
   }
 
   return (
