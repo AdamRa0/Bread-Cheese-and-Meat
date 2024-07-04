@@ -1,5 +1,6 @@
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 import Button from '../../ui/Button';
+import { useSelector } from 'react-redux';
 
 const fakeCart = [
   {
@@ -26,6 +27,8 @@ const fakeCart = [
 ];
 
 function CreateOrder() {
+  const username = useSelector((state) => state.user.username);
+
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
   const navigation = useNavigation();
@@ -48,6 +51,7 @@ function CreateOrder() {
               className="input w-full"
               type="text"
               name="customer"
+              defaultValue={username}
               required
             />
           </div>
