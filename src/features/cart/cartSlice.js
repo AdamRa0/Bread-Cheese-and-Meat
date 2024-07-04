@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const cartSlice = createSlice({
-  cart: 'cart',
+  name: 'cart',
   initialState,
   reducers: {
     addItem(state, action) {
@@ -32,6 +32,7 @@ const cartSlice = createSlice({
       item.quantity--;
       item.totalPrice = item.quantity * item.unitPrice;
     },
+    // eslint-disable-next-line no-unused-vars
     clearCart(state, action) {
       state.cart = [];
     },

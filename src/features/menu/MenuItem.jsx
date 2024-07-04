@@ -3,7 +3,11 @@ import { formatCurrency } from '../../utils/helpers';
 import Button from '../../ui/Button';
 
 function MenuItem({ pizza }) {
-  const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
+  function handleAddToCart() {
+    console.log(id);
+  }
 
   return (
     <li className="flex gap-4 py-2">
@@ -12,13 +16,12 @@ function MenuItem({ pizza }) {
         src={imageUrl}
         alt={name}
       />
-      <div className="flex flex-col grow pt-0.5">
+      <div className="flex grow flex-col pt-0.5">
         <p className="font-medium">{name}</p>
         <p className="text-sm capitalize italic text-stone-500">
           {ingredients.join(', ')}
         </p>
-        <div className="mt-auto flex 
-        items-center justify-between">
+        <div className="mt-auto flex items-center justify-between">
           {!soldOut ? (
             <p className="text-sm">{formatCurrency(unitPrice)}</p>
           ) : (
@@ -27,7 +30,8 @@ function MenuItem({ pizza }) {
             </p>
           )}
 
-          <Button type="small">Add to cart</Button>
+          {!soldOut && <Button type="small"
+           onClick={handleAddToCart}>Add to cart</Button>}
         </div>
       </div>
     </li>
